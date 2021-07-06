@@ -1,0 +1,8 @@
+base_head: merge(main, pr-123)
+unmergeable_prs: [123]
+api_trace:
+- create merge-candidate-123-1 at main
+- merge pr-123 into merge-candidate-123-1
+- checks pass for merge-candidate-123-1
+- fast-forward to merge(main, pr-123)
+- delete merge-candidate-123-1

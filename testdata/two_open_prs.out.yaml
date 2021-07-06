@@ -1,0 +1,20 @@
+base_head: merge(main, pr-123)
+mergeable_prs: [456]
+unmergeable_prs: [123]
+branches:
+  merge-candidate-456-2:
+    head: merge(merge(main, pr-123), pr-456)
+    parents:
+    - merge(main, pr-123)
+    - pr-456
+api_trace:
+- create merge-candidate-123-1 at main
+- merge pr-123 into merge-candidate-123-1
+- create merge-candidate-456-1 at main
+- merge pr-456 into merge-candidate-456-1
+- create merge-candidate-456-2 at merge(main, pr-123)
+- merge pr-456 into merge-candidate-456-2
+- checks pass for merge-candidate-123-1
+- fast-forward to merge(main, pr-123)
+- delete merge-candidate-456-1
+- delete merge-candidate-123-1

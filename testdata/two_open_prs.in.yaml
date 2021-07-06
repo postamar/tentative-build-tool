@@ -1,0 +1,7 @@
+mergeable_prs:
+  123:
+    - bors merge
+  456:
+    - bors merge
+passing_commits:
+  merge(main, pr-123): 2
